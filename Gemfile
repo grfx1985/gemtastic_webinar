@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'devise', '~> 4.2'
 
+gem 'prawn', '~> 2.1'
+
+gem 'prawn-table', '~> 0.2.2'
+
 gem 'carrierwave', '~> 0.11.2'
 
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
