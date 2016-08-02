@@ -17,14 +17,15 @@
         <td><%=raw post.title %></td>
         <td><%=raw  post.description %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) if can? :update, post %></td>
         <td><%= link_to("PDF",post_path(post, format: :pdf), method: 'get') %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } if can? :update, post %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if can? :create, Post %>
 <%= link_to 'New Post', new_post_path %>
+<% end %>

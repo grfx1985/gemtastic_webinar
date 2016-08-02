@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'devise', '~> 4.2'
 
+gem 'cancancan', '~> 1.10'
+
 gem 'prawn', '~> 2.1'
 
 gem 'prawn-table', '~> 0.2.2'

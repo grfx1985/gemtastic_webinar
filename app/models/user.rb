@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
+  has_many :posts
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
@@ -23,6 +24,20 @@ class User < ActiveRecord::Base
 
       end
     end
-
   end
+
+  def to_s
+    "#{email}"
+  end
+
+  def admin?
+    self.admin
+  end
+
+  def regular?
+    !self.admin || self.admin == nil
+  end
+
+
+
 end

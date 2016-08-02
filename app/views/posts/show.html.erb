@@ -9,7 +9,8 @@
   <strong>Description:</strong>
   <%= raw @post.description %>
 </p>
-
+<% if can? :update, @post %>
 <%= link_to 'Edit', edit_post_path(@post) %> |
+<% end %>
 <%= link_to("PDF",post_path(@post, format: :pdf), method: 'get') %> |
 <%= link_to 'Back', posts_path %>
