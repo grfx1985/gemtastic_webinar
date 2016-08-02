@@ -2,12 +2,12 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @post.title %>
+  <%=raw  @post.title %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @post.description %>
+  <%= raw @post.description %>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
