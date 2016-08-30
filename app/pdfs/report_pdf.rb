@@ -34,7 +34,7 @@ class ReportPdf < Prawn::Document
     # This makes a call to product_rows and gets back an array of data that will populate the columns and rows of a table
     # I then included some styling to include a header and make its text bold. I made the row background colors alternate between grey and white
     # Then I set the table column widths
-    table advert_rows do
+    table posts_rows do
       row(0).font_style = :bold
       self.header = true
       self.row_colors = ['DDDDDD', 'FFFFFF']
@@ -42,8 +42,7 @@ class ReportPdf < Prawn::Document
     end
   end
 
-  def advert_rows
-    [['#', @post.id],['Title',@post.title ],[ 'Description', @post.description.to_s.gsub!(/(<[^>]+>|&nbsp;|\r|\n)/,"") ]]
-
-    end
+  def posts_rows
+    [['#', @post.id],['Title',@post.title ],[ 'Description', ActionView::Base.full_sanitizer.sanitize(@post.description) ]]
+  end
 end
